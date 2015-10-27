@@ -1,0 +1,73 @@
+{
+    "name": "architecture choices",
+    "root": true,
+    "children": [
+        {
+            "name": "interfaces",
+            "children": [
+                {"name": "transmission media"},
+                {"name": "conversion technology"}
+            ]
+        },
+        {
+            "name": "partitions",
+            "children": [
+                {"name": "manual"},
+                {"name": "automated"}
+            ]
+        },
+        {
+            "name": "process types",
+            "children": [
+                {"name": "batch"},
+                {"name": "interactive"}
+            ]
+        },
+        {
+            "name": "process cycles",
+            "children": [
+                {
+                    "name": "periodic",
+                    "children": [
+                        {"name": "hourly"},
+                        {"name": "daily"}
+                    ]
+                },
+                {
+                    "name": "as requested",
+                    "children": [
+                        {"name": "immediate"},
+                        {"name": "delayed"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "process model",
+            "children": [
+                {"name": "centralized"},
+                {
+                    "name": "distributed",
+                    "children": [
+                        {
+                            "name": "client server",
+                            "children": [
+                                {"name": "two tier"},
+                                {
+                                    "name": "three tier"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "state model",
+            "children": [
+                {"name": "centralized"},
+                {"name": "distributed"}
+            ]
+        }
+    ]
+}

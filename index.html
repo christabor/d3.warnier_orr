@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>d3.js plugin</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <style>
+        #examples {
+            text-align: center;
+        }
+        g > g:first-of-type text {
+            text-transform: uppercase;
+        }
+        svg {
+            margin: 1em;
+            border: 1px solid #ccc;
+        }
+        path {
+            stroke: #ccc;
+            stroke-width: 2;
+        }
+        .list-unstyled li {
+            margin: 0.5em 0 0.5em 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>A <a href="https://en.wikipedia.org/wiki/Warnier/Orr_diagram">Warnier-Orr diagram</a> in <a href="d3js.org">d3.js</a></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">A Warnier/Orr diagram (also known as a logical construction of a program/system) is a kind of <strong>hierarchical flowchart</strong> that allows the description of the organization of data and procedures. They were initially developed in France by Jean-Dominique Warnier and in the United States by Kenneth Orr.</p>
+                <p> This method aids the design of program structures by identifying the output and processing results and then working backwards to determine the steps and combinations of input needed to produce them. The simple graphic method used in Warnier/Orr diagrams makes the levels in the system evident and the movement of the data between them vivid.</p>
+                <hr>
+                <h3>Usage</h3>
+                <code>
+                    d3_warnier_orr({container: '#container', width: 900, height: 1000, json: 'wo-example.json', data: null});
+                </code>
+                <h3>Options</h3>
+                {
+                <ul class="list-unstyled">
+                    <li>
+                        <li>
+                            <span class="label label-danger">required</span>
+                            <strong>settings [object]</strong>: the configuration object
+                        {
+                        <ul class="list-unstyled">
+                            <li>
+                                <span class="label label-default">optional</span>
+                                <strong>json [string]</strong>: a json file to load tree data from.
+                                <br>
+                                <small class="text text-danger">&nbsp;&nbsp;(Required if `data` is not specified).</small>
+                            </li>
+                            <li>
+                                <span class="label label-default">optional</span>
+                                <strong>data [object]</strong>: an in-memory object representing the tree data
+                                <br>
+                                <small class="text text-danger">&nbsp;&nbsp;(Required if `json` is not specified)</small>
+                            </li>
+                            <li>
+                                <span class="label label-default">optional</span>
+                                <strong>container [string]</strong>: the html element to contain the svg element - default is body.
+                            </li>
+                            <li>
+                                <span class="label label-default">optional</span>
+                                <strong>width [integer]</strong>: the width of the svg document - default is 1/2 screen width.
+                            </li>
+                            <li>
+                                <span class="label label-default">optional</span>
+                                <strong>height [integer]</strong>: the height of the svg document - default is 1/2 screen height.
+                            </li>
+                            <li>
+                                <span class="label label-default">optional</span>
+                                <strong>nub_size [integer]</strong>: the width of the "nub" that splits each tree -- see the examples below to visualize.
+                            </li>
+                        </ul>
+                        }
+                    </li>
+                </ul>
+                }
+                <h3>Data format</h3>
+                <p>Should correspond to the typical d3.js tree json format, where each element is an object with keys `name` and optional `children` array. <span class="text text-warning">The top element <strong>should also have a `root` key specified</strong>, which will determine the root label styling and positioning.</span> See <strong>wo-example.json</strong> for details.</p>
+                <h3>Styling overrides</h3>
+                <p>Should be done via css. See this page for example overrides.</p>
+            </div>
+        </div>
+        <div class="row" id="examples">
+            <div class="col-md-12">
+                <hr>
+                <h3>Examples</h3>
+                <div id="container"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <p class="text-center copyright">
+                    &copy; Copyright 2015 Chris Tabor. <br class="visible-xs"> See repo and LICENSE for details.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js'></script>
+    <script type="text/javascript" src="dist/d3.warnier_orr.min.js"></script>
+    <script>
+        window.onload = function() {
+            var cont = '#container';
+            for(var i = 5; i < 10; i++) {
+                d3.select(cont).append('h2').html(i * 100 + ' x ' + (i * 100 + 100));
+                d3_warnier_orr({container: cont, width: i * 100, height: i * 100 + 100, json: 'wo-example.json'});
+            }
+        };
+    </script>
+</body>
+</html>
