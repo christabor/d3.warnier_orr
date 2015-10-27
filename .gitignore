@@ -26,7 +26,6 @@ compiled source #
 namebot.egg-info/
 
 # Dependencies #
-dist/
 ################
 /.sass-cache
 .sass-cache
